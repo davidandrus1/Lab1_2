@@ -13,6 +13,15 @@ class Main {
         }
         return max;
     }
+    public static int calculate_min(int[] array){
+        int min = 99999;
+        for(int i = array.length - 1; i > 0; i--){
+            if(array[i] < min){
+                min = array[i];
+            }
+        }
+        return min;
+    }
 
 
     public static void main(String args[]){
@@ -30,6 +39,8 @@ class Main {
 
         int max = calculate_max(array);
         System.out.println("Das Maximum ist : "+ max);
+        int min = calculate_min(array);
+        System.out.println("Das Minimum ist : "+ min);
 
     }
 }
