@@ -1,10 +1,11 @@
 import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 
 class Main {
-    public static int calculate_max(int[] array){
+    public static int calculateMax(int[] array){
         int max =  0;
         for(int i = 0; i < array.length; i++){
             if(array[i] > max){
@@ -13,7 +14,7 @@ class Main {
         }
         return max;
     }
-    public static int calculate_min(int[] array){
+    public static int calculateMin(int[] array){
         int min = 99999;
         for(int i = array.length - 1; i > 0; i--){
             if(array[i] < min){
@@ -23,24 +24,44 @@ class Main {
         return min;
     }
 
+    public static int calculateMaxSum(int[] array){
+        int maxSum = 0;
+//        for (int i = 0; i < array.length - 1; i++) {
+//            if (array[i] > array[i + 1]) {
+//                int aux = array[i];
+//                array[i] = array[i + 1];
+//                array[i + 1] = aux;
+//            }
+//        }
+        Arrays.sort(array);
+        for(int i = 1; i < array.length; i++){
+            maxSum = maxSum + array[i];
+        }
+
+        return maxSum;
+    }
+
 
     public static void main(String args[]){
         Scanner input = new Scanner(System.in);
-        System.out.println("Geben sie die Lange des Arrays an: ");
+        System.out.print("Geben sie die Lange des Arrays an: ");
 
         int n = input.nextInt();
 
         int[] array = new int[n];
 
-        System.out.println("Geben sie " + n + " Zahlen an.");
+        System.out.print("Geben sie " + n + " Zahlen an.");
         for(int i = 0; i < n; i++){
             array[i] = input.nextInt();
         }
 
-        int max = calculate_max(array);
+        int max = calculateMax(array);
         System.out.println("Das Maximum ist : "+ max);
-        int min = calculate_min(array);
+        int min = calculateMin(array);
         System.out.println("Das Minimum ist : "+ min);
+
+        int maxSum = calculateMaxSum(array);
+        System.out.println("Die maximale Summe ist : "+maxSum);
 
     }
 }
